@@ -11,7 +11,7 @@ import { useAuth } from '@/contexts/AuthContext';
 
 const Index: React.FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { signedIn } = useAuth();
   const featuredCourses = mockCourses.slice(0, 3);
   
   return (
@@ -28,7 +28,7 @@ const Index: React.FC = () => {
               Discover a seamless e-learning platform designed specifically for college students and faculty.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {isAuthenticated ? (
+              {signedIn ? (
                 <AnimatedButton
                   size="lg"
                   onClick={() => navigate('/dashboard')}
@@ -158,11 +158,11 @@ const Index: React.FC = () => {
           </p>
           <AnimatedButton 
             size="lg" 
-            onClick={() => navigate(isAuthenticated ? '/dashboard' : '/signup')}
+            onClick={() => navigate(signedIn ? '/dashboard' : '/signup')}
             className="bg-white text-edu-primary hover:bg-gray-100 group"
             glowColor="rgba(255, 255, 255, 0.6)"
           >
-            {isAuthenticated ? 'Go to Dashboard' : 'Get Started Now'}
+            {signedIn ? 'Go to Dashboard' : 'Get Started Now'}
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </AnimatedButton>
         </div>

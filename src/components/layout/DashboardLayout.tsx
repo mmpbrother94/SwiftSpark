@@ -49,7 +49,7 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-  const { currentUser, logout } = useAuth();
+  const { currentUser, signOut } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -57,7 +57,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const handleLogout = async () => {
-    await logout();
+    await signOut();
     toast({
       title: "Logged out successfully",
       description: "You have been logged out of your account.",
@@ -129,7 +129,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
            currentUser?.role === 'admin' ? 'Admin Portal' : 'Dashboard'}
         </h2>
         <Avatar className="h-8 w-8">
-          <AvatarImage src={currentUser?.profilePicture} />
+          <AvatarImage src={currentUser?.avatar} />
           <AvatarFallback>{currentUser?.name?.charAt(0) || 'U'}</AvatarFallback>
         </Avatar>
       </div>
@@ -195,7 +195,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <div className="mt-auto p-4 border-t">
               <div className="flex items-center gap-3">
                 <Avatar>
-                  <AvatarImage src={currentUser?.profilePicture} />
+                  <AvatarImage src={currentUser?.avatar} />
                   <AvatarFallback>{currentUser?.name?.charAt(0) || 'U'}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col">
@@ -244,7 +244,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <div className="mt-auto p-4 border-t">
                 <div className="flex items-center gap-3">
                   <Avatar>
-                    <AvatarImage src={currentUser?.profilePicture} />
+                    <AvatarImage src={currentUser?.avatar} />
                     <AvatarFallback>{currentUser?.name?.charAt(0) || 'U'}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">

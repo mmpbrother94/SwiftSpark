@@ -21,9 +21,9 @@ const queryClient = new QueryClient();
 
 // Protected route component
 const ProtectedRoute = ({ children, requiredRole }: { children: JSX.Element, requiredRole?: string }) => {
-  const { currentUser, isAuthenticated } = useAuth();
+  const { currentUser, signedIn } = useAuth();
   
-  if (!isAuthenticated) {
+  if (!signedIn) {
     return <Navigate to="/signin" replace />;
   }
   
