@@ -36,6 +36,8 @@ const ProtectedRoute = ({ children, requiredRole }: { children: JSX.Element, req
 
 // Route wrapper component
 const AppRoutes = () => {
+  const { currentUser } = useAuth();
+  
   return (
     <Routes>
       <Route path="/" element={<Index />} />
@@ -49,7 +51,14 @@ const AppRoutes = () => {
           </ProtectedRoute>
         } 
       />
-      <Route path="/courses" element={<Courses />} />
+      <Route 
+        path="/courses" 
+        element={
+          <ProtectedRoute>
+            <Courses />
+          </ProtectedRoute>
+        } 
+      />
       <Route 
         path="/assignments" 
         element={
@@ -60,6 +69,110 @@ const AppRoutes = () => {
       />
       <Route 
         path="/admin" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/users" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/courses" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/settings" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/reports" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/announcements" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/security" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/database" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/analytics" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/system-status" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/users/create" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/courses/create" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/announcements/create" 
+        element={
+          <ProtectedRoute requiredRole="admin">
+            <AdminPanel />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/reports/generate" 
         element={
           <ProtectedRoute requiredRole="admin">
             <AdminPanel />
